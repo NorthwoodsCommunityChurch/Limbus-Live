@@ -1,0 +1,41 @@
+name: ScreenTally
+options:
+  bundleIdPrefix: com.northwoodschurch
+  deploymentTarget:
+    macOS: "15.0"
+  xcodeVersion: "16.0"
+  createIntermediateGroups: true
+  defaultConfig: Release
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MACOSX_DEPLOYMENT_TARGET: "15.0"
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGN_STYLE: Manual
+
+targets:
+  ScreenTally:
+    type: application
+    platform: macOS
+    sources:
+      - path: ScreenTally
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.northwoodschurch.screentally
+        PRODUCT_NAME: "Screen Tally"
+        GENERATE_INFOPLIST_FILE: true
+        INFOPLIST_KEY_LSUIElement: true
+        INFOPLIST_KEY_CFBundleDisplayName: "Screen Tally"
+        INFOPLIST_KEY_NSHumanReadableCopyright: "Copyright 2025 Northwoods Community Church"
+        ENABLE_USER_SCRIPT_SANDBOXING: false
+
+schemes:
+  ScreenTally:
+    build:
+      targets:
+        ScreenTally: all
+    run:
+      config: Debug
+    archive:
+      config: Release

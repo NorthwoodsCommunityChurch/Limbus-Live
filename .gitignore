@@ -1,0 +1,30 @@
+# Xcode
+*.xcodeproj/
+xcuserdata/
+*.xcworkspace/
+DerivedData/
+*.dSYM
+*.dSYM.zip
+*.ipa
+*.xcarchive
+
+# Build outputs
+build/
+*.app
+*.zip
+*.dmg
+
+# OS files
+.DS_Store
+*.swp
+*~
+Thumbs.db
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Temporary files
+*.log
+*.tmp

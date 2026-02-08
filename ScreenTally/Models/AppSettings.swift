@@ -1,0 +1,90 @@
+import Foundation
+import Observation
+
+/// Manages persistent app settings via UserDefaults
+@Observable
+@MainActor
+final class AppSettings {
+    static let shared = AppSettings()
+
+    private let defaults = UserDefaults.standard
+
+    private enum Keys {
+        static let port = "tslPort"
+        static let monitoredSourceIndex = "monitoredSourceIndex"
+        static let borderThickness = "borderThickness"
+        static let showBorderOnPreview = "showBorderOnPreview"
+        static let selectedScreenIndex = "selectedScreenIndex"
+    }
+
+    // MARK: - Settings
+
+    /// TSL listener port (default 5201)
+    var port: Int {
+        didSet {
+            defaults.set(port, forKey: Keys.port)
+        }
+    }
+
+    /// The source index to monitor for tally (nil = none selected)
+    var monitoredSourceIndex: Int? {
+        didSet {
+            if let index = monitoredSourceIndex {
+                defaults.set(index, forKey: Keys.monitoredSourceIndex)
+            } else {
+                defaults.removeObject(forKey: Keys.monitoredSourceIndex)
+            }
+        }
+    }
+
+    /// Border thickness in points (default 8)
+    var borderThickness: Int {
+        didSet {
+            defaults.set(borderThickness, forKey: Keys.borderThickness)
+        }
+    }
+
+    /// Whether to show border on preview (default true)
+    var showBorderOnPreview: Bool {
+        didSet {
+            defaults.set(showBorderOnPreview, forKey: Keys.showBorderOnPreview)
+        }
+    }
+
+    /// Selected screen index (0 = primary/main screen)
+    var selectedScreenIndex: Int {
+        didSet {
+            defaults.set(selectedScreenIndex, forKey: Keys.selectedScreenIndex)
+        }
+    }
+
+    // MARK: - Debug
+
+    /// Debug override for tally state (not persisted). Set to non-nil to override actual tally.
+    var debugTallyOverride: TallyState? = nil
+
+    // MARK: - Init
+
+    private init() {
+        // Register defaults
+        defaults.register(defaults: [
+            Keys.port: 5201,
+            Keys.borderThickness: 8,
+            Keys.showBorderOnPreview: true,
+            Keys.selectedScreenIndex: 0
+        ])
+
+        // Load saved values
+        self.port = defaults.integer(forKey: Keys.port)
+        self.borderThickness = defaults.integer(forKey: Keys.borderThickness)
+        self.showBorderOnPreview = defaults.bool(forKey: Keys.showBorderOnPreview)
+        self.selectedScreenIndex = defaults.integer(forKey: Keys.selectedScreenIndex)
+
+        // Load optional source index
+        if defaults.object(forKey: Keys.monitoredSourceIndex) != nil {
+            self.monitoredSourceIndex = defaults.integer(forKey: Keys.monitoredSourceIndex)
+        } else {
+            self.monitoredSourceIndex = nil
+        }
+    }
+}
