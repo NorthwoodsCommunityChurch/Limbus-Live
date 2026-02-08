@@ -4,6 +4,7 @@ struct MenuBarView: View {
     let tslListener: TSLListener
     @State private var settings = AppSettings.shared
     @State private var updateManager = UpdateManager.shared
+    @State private var showingSourcePicker = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -57,51 +58,45 @@ struct MenuBarView: View {
                 }
             }
 
-            // Source Picker (Multi-select)
-            VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    Text("Monitor Sources:")
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    if !settings.monitoredSourceIndices.isEmpty {
-                        Button("Clear All") {
-                            settings.monitoredSourceIndices = []
+            // Source Picker
+            HStack {
+                Text("Sources:")
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Button {
+                    showingSourcePicker = true
+                } label: {
+                    HStack(spacing: 4) {
+                        if settings.monitoredSourceIndices.isEmpty {
+                            Text("None selected")
+                                .foregroundStyle(.secondary)
+                        } else {
+                            Text("\(settings.monitoredSourceIndices.count) selected")
                         }
-                        .buttonStyle(.plain)
-                        .font(.caption)
-                        .foregroundStyle(.blue)
+                        Image(systemName: "chevron.right")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
                 }
+                .buttonStyle(.bordered)
+                .disabled(tslListener.sortedSources.isEmpty)
+            }
+            .popover(isPresented: $showingSourcePicker, arrowEdge: .trailing) {
+                SourcePickerPopover(
+                    sources: tslListener.sortedSources,
+                    selectedIndices: $settings.monitoredSourceIndices
+                )
+            }
 
-                if tslListener.sortedSources.isEmpty {
-                    if tslListener.isConnected {
-                        Text("Waiting for tally data...")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    } else {
-                        Text("Connect to see available sources")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
+            if tslListener.sortedSources.isEmpty {
+                if tslListener.isConnected {
+                    Text("Waiting for tally data...")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 } else {
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 2) {
-                            ForEach(tslListener.sortedSources) { source in
-                                SourceToggleRow(
-                                    source: source,
-                                    isSelected: settings.monitoredSourceIndices.contains(source.index),
-                                    onToggle: {
-                                        if settings.monitoredSourceIndices.contains(source.index) {
-                                            settings.monitoredSourceIndices.remove(source.index)
-                                        } else {
-                                            settings.monitoredSourceIndices.insert(source.index)
-                                        }
-                                    }
-                                )
-                            }
-                        }
-                    }
-                    .frame(maxHeight: 150)
+                    Text("Connect to see available sources")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
             }
 
@@ -288,6 +283,101 @@ struct MenuBarView: View {
     }
 }
 
+// MARK: - Source Picker Popover
+
+private struct SourcePickerPopover: View {
+    let sources: [SourceInfo]
+    @Binding var selectedIndices: Set<Int>
+    @State private var searchText = ""
+
+    private var filteredSources: [SourceInfo] {
+        if searchText.isEmpty {
+            return sources
+        }
+        return sources.filter { source in
+            source.displayName.localizedCaseInsensitiveContains(searchText)
+        }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            // Header
+            HStack {
+                Text("Select Sources")
+                    .font(.headline)
+                Spacer()
+                if !selectedIndices.isEmpty {
+                    Button("Clear All") {
+                        selectedIndices = []
+                    }
+                    .buttonStyle(.plain)
+                    .font(.caption)
+                    .foregroundStyle(.blue)
+                }
+            }
+            .padding()
+
+            // Search field
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.secondary)
+                TextField("Search sources...", text: $searchText)
+                    .textFieldStyle(.plain)
+                if !searchText.isEmpty {
+                    Button {
+                        searchText = ""
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(8)
+            .background(Color(nsColor: .controlBackgroundColor))
+            .cornerRadius(8)
+            .padding(.horizontal)
+            .padding(.bottom, 8)
+
+            Divider()
+
+            // Source list
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    if filteredSources.isEmpty {
+                        Text("No sources match \"\(searchText)\"")
+                            .foregroundStyle(.secondary)
+                            .padding()
+                    } else {
+                        ForEach(filteredSources) { source in
+                            SourceToggleRow(
+                                source: source,
+                                isSelected: selectedIndices.contains(source.index),
+                                onToggle: {
+                                    if selectedIndices.contains(source.index) {
+                                        selectedIndices.remove(source.index)
+                                    } else {
+                                        selectedIndices.insert(source.index)
+                                    }
+                                }
+                            )
+                            .padding(.horizontal)
+                            .padding(.vertical, 4)
+
+                            if source.id != filteredSources.last?.id {
+                                Divider()
+                                    .padding(.leading)
+                            }
+                        }
+                    }
+                }
+            }
+            .frame(minHeight: 200, maxHeight: 400)
+        }
+        .frame(width: 300)
+    }
+}
+
 // MARK: - Source Toggle Row
 
 private struct SourceToggleRow: View {
@@ -300,22 +390,22 @@ private struct SourceToggleRow: View {
             HStack {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .foregroundStyle(isSelected ? .blue : .secondary)
-                    .font(.system(size: 14))
+                    .font(.system(size: 16))
 
                 Text(source.displayName)
                     .foregroundStyle(.primary)
+                    .font(.body)
 
                 Spacer()
 
                 if source.tally != .clear {
                     Circle()
                         .fill(source.tally.swiftUIColor)
-                        .frame(width: 8, height: 8)
+                        .frame(width: 10, height: 10)
                 }
             }
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .padding(.vertical, 2)
     }
 }
