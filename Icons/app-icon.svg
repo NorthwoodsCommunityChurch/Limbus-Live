@@ -1,0 +1,33 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bg12" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#1a2744"/>
+            <stop offset="50%" style="stop-color:#162040"/>
+            <stop offset="100%" style="stop-color:#0d1528"/>
+        </linearGradient>
+        <radialGradient id="bg12g" cx="50%" cy="40%" r="50%">
+            <stop offset="0%" style="stop-color:rgba(59,130,246,0.12)"/>
+            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+        </radialGradient>
+        <filter id="gr12"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="gg12"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <clipPath id="screenClip12"><rect x="108" y="124" width="300" height="216" rx="4"/></clipPath>
+    </defs>
+    <rect width="512" height="512" rx="115" fill="url(#bg12)"/>
+    <rect width="512" height="512" rx="115" fill="url(#bg12g)"/>
+    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr12)"/>
+    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg12)"/>
+    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+    <!-- SMPTE-style color bars (very subtle / dark) -->
+    <g clip-path="url(#screenClip12)" opacity="0.2">
+        <rect x="108" y="124" width="43" height="216" fill="#c0c0c0"/>
+        <rect x="151" y="124" width="43" height="216" fill="#c0c000"/>
+        <rect x="194" y="124" width="43" height="216" fill="#00c0c0"/>
+        <rect x="237" y="124" width="43" height="216" fill="#00c000"/>
+        <rect x="280" y="124" width="43" height="216" fill="#c000c0"/>
+        <rect x="323" y="124" width="43" height="216" fill="#c00000"/>
+        <rect x="366" y="124" width="42" height="216" fill="#0000c0"/>
+    </g>
+    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+</svg>

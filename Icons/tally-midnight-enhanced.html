@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tally Border — Electric Midnight Enhanced</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: #111;
+            color: #fff;
+            padding: 48px;
+            min-height: 100vh;
+        }
+        h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
+        .subtitle { color: #666; font-size: 14px; margin-bottom: 48px; }
+        .section-title {
+            font-size: 13px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1.5px; color: #555; margin: 56px 0 24px;
+        }
+        .section-title:first-of-type { margin-top: 0; }
+        .section-desc { color: #888; font-size: 13px; margin-bottom: 20px; max-width: 640px; line-height: 1.5; }
+        .icons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 32px;
+        }
+        .icon-card {
+            background: #1a1a1a; border-radius: 16px; padding: 28px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .icon-wrapper { width: 200px; height: 200px; margin-bottom: 16px; }
+        .icon-wrapper svg {
+            width: 100%; height: 100%; border-radius: 44px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+        .icon-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .icon-concept { font-size: 12px; color: #666; text-align: center; line-height: 1.4; max-width: 220px; }
+        .pick { border: 1px solid #ef4444; box-shadow: 0 0 20px rgba(239,68,68,0.1); }
+        .pick-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #ef4444; margin-bottom: 12px; }
+
+        .sizes-section { margin-top: 64px; }
+        .size-row { display: flex; align-items: end; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+        .size-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .size-item span { font-size: 11px; color: #555; }
+        .bg-tests { margin-top: 64px; }
+        .bg-row { display: flex; gap: 0; border-radius: 16px; overflow: hidden; margin-top: 16px; }
+        .bg-cell { flex: 1; padding: 32px; display: flex; justify-content: center; align-items: center; }
+        .bg-cell svg { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body>
+    <h1>Tally Border — Electric Midnight</h1>
+    <p class="subtitle">Adding detail and texture to the base</p>
+
+    <!-- ==================== GRID & TECHNICAL ==================== -->
+    <div class="section-title">Grid & Technical Overlays</div>
+    <div class="icons-grid">
+
+        <!-- 1: Scope Grid -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="bg1g" cx="50%" cy="40%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.12)"/>
+                            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+                        </radialGradient>
+                        <pattern id="grid1" width="36" height="36" patternUnits="userSpaceOnUse">
+                            <rect width="36" height="36" fill="none"/>
+                            <line x1="0" y1="36" x2="36" y2="36" stroke="rgba(100,150,255,0.08)" stroke-width="0.5"/>
+                            <line x1="36" y1="0" x2="36" y2="36" stroke="rgba(100,150,255,0.08)" stroke-width="0.5"/>
+                        </pattern>
+                        <filter id="gr1"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg1"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg1)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#bg1g)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#grid1)"/>
+                    <!-- Crosshairs -->
+                    <line x1="256" y1="60" x2="256" y2="452" stroke="rgba(100,150,255,0.06)" stroke-width="0.5"/>
+                    <line x1="60" y1="256" x2="452" y2="256" stroke="rgba(100,150,255,0.06)" stroke-width="0.5"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr1)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg1)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Scope Grid</div>
+            <div class="icon-concept">Waveform monitor grid in blue — engineering aesthetic</div>
+        </div>
+
+        <!-- 2: Fine dot matrix -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="bg2g" cx="50%" cy="40%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.12)"/>
+                            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+                        </radialGradient>
+                        <pattern id="dots2" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <circle cx="10" cy="10" r="0.8" fill="rgba(140,180,255,0.12)"/>
+                        </pattern>
+                        <filter id="gr2"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg2"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg2)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#bg2g)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#dots2)"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr2)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg2)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Dot Matrix</div>
+            <div class="icon-concept">Fine LED pixel dots — display panel texture</div>
+        </div>
+
+        <!-- 3: Diagonal hash -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="bg3g" cx="50%" cy="40%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.12)"/>
+                            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+                        </radialGradient>
+                        <pattern id="hash3" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                            <line x1="0" y1="0" x2="0" y2="16" stroke="rgba(100,150,255,0.05)" stroke-width="1"/>
+                        </pattern>
+                        <filter id="gr3"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg3"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg3)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#bg3g)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#hash3)"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr3)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg3)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Diagonal Hash</div>
+            <div class="icon-concept">Subtle 45° line texture — carbon fiber meets blueprint</div>
+        </div>
+    </div>
+
+    <!-- ==================== WEAVE / SYNAXIS ==================== -->
+    <div class="section-title">Synaxis Weave Integration</div>
+    <div class="icons-grid">
+
+        <!-- 4: Subtle blue weave -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="bg4g" cx="50%" cy="40%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.12)"/>
+                            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+                        </radialGradient>
+                        <filter id="gr4"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg4"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg4)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#bg4g)"/>
+                    <!-- Blue-tinted weave threads -->
+                    <path d="M40 175 Q150 135 256 190 Q362 245 472 205" stroke="rgba(80,120,200,0.12)" stroke-width="22" fill="none" stroke-linecap="round"/>
+                    <path d="M40 255 Q150 295 256 255 Q362 215 472 255" stroke="rgba(100,140,220,0.15)" stroke-width="22" fill="none" stroke-linecap="round"/>
+                    <path d="M40 335 Q150 375 256 325 Q362 270 472 310" stroke="rgba(80,120,200,0.12)" stroke-width="22" fill="none" stroke-linecap="round"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr4)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg4)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Blue Weave</div>
+            <div class="icon-concept">Synaxis threads tinted to match midnight blue</div>
+        </div>
+
+        <!-- 5: Weave with tally dot -->
+        <div class="icon-card pick">
+            <div class="pick-badge">★ Favorite</div>
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="bg5g" cx="50%" cy="40%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.14)"/>
+                            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+                        </radialGradient>
+                        <filter id="gr5"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg5"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="dotglow5"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg5)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#bg5g)"/>
+                    <!-- Blue weave threads -->
+                    <path d="M40 175 Q150 135 256 190 Q362 245 472 205" stroke="rgba(70,110,190,0.13)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <path d="M40 255 Q150 295 256 255 Q362 215 472 255" stroke="rgba(90,130,210,0.16)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <path d="M40 335 Q150 375 256 325 Q362 270 472 310" stroke="rgba(70,110,190,0.13)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <!-- Center tally dot with glow -->
+                    <circle cx="256" cy="255" r="16" fill="rgba(239,68,68,0.15)" filter="url(#dotglow5)"/>
+                    <circle cx="256" cy="255" r="8" fill="rgba(239,68,68,0.5)"/>
+                    <circle cx="256" cy="255" r="4" fill="#fca5a5" opacity="0.6"/>
+                    <!-- L-split tally -->
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr5)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg5)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Weave + Tally Dot</div>
+            <div class="icon-concept">Synaxis weave with glowing center tally — full brand tie-in</div>
+        </div>
+
+        <!-- 6: Dense weave -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="bg6g" cx="50%" cy="40%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.12)"/>
+                            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+                        </radialGradient>
+                        <filter id="gr6"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg6"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg6)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#bg6g)"/>
+                    <!-- Dense weave — 5 threads -->
+                    <path d="M30 140 Q140 105 256 155 Q372 205 482 170" stroke="rgba(70,110,190,0.10)" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <path d="M30 200 Q140 235 256 200 Q372 165 482 200" stroke="rgba(90,130,210,0.13)" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <path d="M30 260 Q140 225 256 260 Q372 295 482 260" stroke="rgba(70,110,190,0.10)" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <path d="M30 320 Q140 355 256 320 Q372 285 482 320" stroke="rgba(90,130,210,0.13)" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <path d="M30 380 Q140 345 256 380 Q372 415 482 380" stroke="rgba(70,110,190,0.10)" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr6)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg6)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Dense Weave</div>
+            <div class="icon-concept">Tighter thread pattern — more textile, more presence</div>
+        </div>
+    </div>
+
+    <!-- ==================== LIGHT EFFECTS ==================== -->
+    <div class="section-title">Light & Glow Effects</div>
+    <div class="icons-grid">
+
+        <!-- 7: Tally color bleed -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <!-- Red bleed from top-right -->
+                        <radialGradient id="redBleed7" cx="85%" cy="15%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(239,68,68,0.12)"/>
+                            <stop offset="100%" style="stop-color:rgba(239,68,68,0)"/>
+                        </radialGradient>
+                        <!-- Green bleed from bottom-left -->
+                        <radialGradient id="greenBleed7" cx="15%" cy="85%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(34,197,94,0.10)"/>
+                            <stop offset="100%" style="stop-color:rgba(34,197,94,0)"/>
+                        </radialGradient>
+                        <filter id="gr7"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg7"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg7)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#redBleed7)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#greenBleed7)"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr7)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg7)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Tally Color Bleed</div>
+            <div class="icon-concept">Red & green light bleeding into the background from their corners</div>
+        </div>
+
+        <!-- 8: Tally bleed + weave -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg8" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="redBleed8" cx="80%" cy="18%" r="45%">
+                            <stop offset="0%" style="stop-color:rgba(239,68,68,0.14)"/>
+                            <stop offset="100%" style="stop-color:rgba(239,68,68,0)"/>
+                        </radialGradient>
+                        <radialGradient id="greenBleed8" cx="18%" cy="80%" r="45%">
+                            <stop offset="0%" style="stop-color:rgba(34,197,94,0.12)"/>
+                            <stop offset="100%" style="stop-color:rgba(34,197,94,0)"/>
+                        </radialGradient>
+                        <filter id="gr8"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg8"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg8)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#redBleed8)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#greenBleed8)"/>
+                    <!-- Blue weave -->
+                    <path d="M40 175 Q150 135 256 190 Q362 245 472 205" stroke="rgba(70,110,190,0.11)" stroke-width="22" fill="none" stroke-linecap="round"/>
+                    <path d="M40 255 Q150 295 256 255 Q362 215 472 255" stroke="rgba(90,130,210,0.14)" stroke-width="22" fill="none" stroke-linecap="round"/>
+                    <path d="M40 335 Q150 375 256 325 Q362 270 472 310" stroke="rgba(70,110,190,0.11)" stroke-width="22" fill="none" stroke-linecap="round"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr8)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg8)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Bleed + Weave</div>
+            <div class="icon-concept">Color bleed with weave — rich and layered</div>
+        </div>
+
+        <!-- 9: Aurora / nebula -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg9" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="aurora9a" cx="30%" cy="30%" r="40%">
+                            <stop offset="0%" style="stop-color:rgba(99,102,241,0.15)"/>
+                            <stop offset="100%" style="stop-color:rgba(99,102,241,0)"/>
+                        </radialGradient>
+                        <radialGradient id="aurora9b" cx="70%" cy="65%" r="35%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.12)"/>
+                            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+                        </radialGradient>
+                        <radialGradient id="aurora9c" cx="50%" cy="45%" r="30%">
+                            <stop offset="0%" style="stop-color:rgba(139,92,246,0.10)"/>
+                            <stop offset="100%" style="stop-color:rgba(139,92,246,0)"/>
+                        </radialGradient>
+                        <filter id="gr9"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg9"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg9)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#aurora9a)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#aurora9b)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#aurora9c)"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr9)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg9)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Nebula</div>
+            <div class="icon-concept">Multiple soft color pools — atmospheric depth</div>
+        </div>
+    </div>
+
+    <!-- ==================== SCREEN CONTENT ==================== -->
+    <div class="section-title">Screen Content Details</div>
+    <div class="section-desc">Adding detail inside the screen rectangle to make it feel like an actual display.</div>
+    <div class="icons-grid">
+
+        <!-- 10: Waveform inside screen -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg10" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="bg10g" cx="50%" cy="40%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.12)"/>
+                            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+                        </radialGradient>
+                        <filter id="gr10"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg10"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <clipPath id="screenClip10"><rect x="104" y="120" width="308" height="224" rx="6"/></clipPath>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg10)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#bg10g)"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr10)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg10)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <!-- Waveform inside screen -->
+                    <g clip-path="url(#screenClip10)">
+                        <path d="M110 232 L150 232 L160 200 L170 260 L180 215 L190 248 L200 225 L210 240 L220 218 L230 250 L240 210 L250 255 L260 220 L270 245 L280 205 L290 258 L300 222 L310 240 L320 215 L330 250 L340 228 L350 238 L360 225 L370 242 L380 232 L410 232" stroke="rgba(59,130,246,0.4)" stroke-width="2" fill="none"/>
+                        <path d="M110 232 L150 232 L160 200 L170 260 L180 215 L190 248 L200 225 L210 240 L220 218 L230 250 L240 210 L250 255 L260 220 L270 245 L280 205 L290 258 L300 222 L310 240 L320 215 L330 250 L340 228 L350 238 L360 225 L370 242 L380 232 L410 232 L410 344 L110 344 Z" fill="rgba(59,130,246,0.06)"/>
+                    </g>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Waveform Screen</div>
+            <div class="icon-concept">Audio/video waveform displayed on the monitor</div>
+        </div>
+
+        <!-- 11: Multiview grid inside -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg11" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="bg11g" cx="50%" cy="40%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.12)"/>
+                            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+                        </radialGradient>
+                        <filter id="gr11"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg11"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg11)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#bg11g)"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr11)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg11)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <!-- 2x2 multiview grid inside screen -->
+                    <rect x="114" y="130" width="143" height="100" rx="3" fill="#0e1428" stroke="rgba(59,130,246,0.1)" stroke-width="1"/>
+                    <rect x="261" y="130" width="143" height="100" rx="3" fill="#0e1428" stroke="rgba(59,130,246,0.1)" stroke-width="1"/>
+                    <rect x="114" y="234" width="143" height="100" rx="3" fill="#0e1428" stroke="rgba(59,130,246,0.1)" stroke-width="1"/>
+                    <rect x="261" y="234" width="143" height="100" rx="3" fill="#0e1428" stroke="rgba(59,130,246,0.1)" stroke-width="1"/>
+                    <!-- Tiny camera labels -->
+                    <text x="124" y="145" fill="rgba(59,130,246,0.3)" font-family="-apple-system" font-size="9" font-weight="600">CAM 1</text>
+                    <text x="271" y="145" fill="rgba(59,130,246,0.3)" font-family="-apple-system" font-size="9" font-weight="600">CAM 2</text>
+                    <text x="124" y="249" fill="rgba(59,130,246,0.3)" font-family="-apple-system" font-size="9" font-weight="600">CAM 3</text>
+                    <text x="271" y="249" fill="rgba(59,130,246,0.3)" font-family="-apple-system" font-size="9" font-weight="600">GFX</text>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Multiview</div>
+            <div class="icon-concept">2×2 multiviewer grid inside — says "video production" instantly</div>
+        </div>
+
+        <!-- 12: Color bars inside -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg12" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="bg12g" cx="50%" cy="40%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.12)"/>
+                            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+                        </radialGradient>
+                        <filter id="gr12"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg12"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <clipPath id="screenClip12"><rect x="108" y="124" width="300" height="216" rx="4"/></clipPath>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg12)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#bg12g)"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr12)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg12)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <!-- SMPTE-style color bars (very subtle / dark) -->
+                    <g clip-path="url(#screenClip12)" opacity="0.2">
+                        <rect x="108" y="124" width="43" height="216" fill="#c0c0c0"/>
+                        <rect x="151" y="124" width="43" height="216" fill="#c0c000"/>
+                        <rect x="194" y="124" width="43" height="216" fill="#00c0c0"/>
+                        <rect x="237" y="124" width="43" height="216" fill="#00c000"/>
+                        <rect x="280" y="124" width="43" height="216" fill="#c000c0"/>
+                        <rect x="323" y="124" width="43" height="216" fill="#c00000"/>
+                        <rect x="366" y="124" width="42" height="216" fill="#0000c0"/>
+                    </g>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Color Bars</div>
+            <div class="icon-concept">SMPTE bars ghosted inside — classic broadcast test signal</div>
+        </div>
+    </div>
+
+    <!-- ==================== COMBO: THE KITCHEN SINK ==================== -->
+    <div class="section-title">Full Combo</div>
+    <div class="section-desc">Mixing the best elements together: Electric Midnight + weave + color bleed + screen detail.</div>
+    <div class="icons-grid">
+
+        <!-- 13: Everything together -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg13" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="redBleed13" cx="80%" cy="18%" r="40%">
+                            <stop offset="0%" style="stop-color:rgba(239,68,68,0.10)"/>
+                            <stop offset="100%" style="stop-color:rgba(239,68,68,0)"/>
+                        </radialGradient>
+                        <radialGradient id="greenBleed13" cx="18%" cy="82%" r="40%">
+                            <stop offset="0%" style="stop-color:rgba(34,197,94,0.08)"/>
+                            <stop offset="100%" style="stop-color:rgba(34,197,94,0)"/>
+                        </radialGradient>
+                        <radialGradient id="blueGlow13" cx="50%" cy="40%" r="50%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.10)"/>
+                            <stop offset="100%" style="stop-color:rgba(59,130,246,0)"/>
+                        </radialGradient>
+                        <filter id="gr13"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg13"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <clipPath id="screenClip13"><rect x="108" y="124" width="300" height="216" rx="4"/></clipPath>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg13)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#blueGlow13)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#redBleed13)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#greenBleed13)"/>
+                    <!-- Weave -->
+                    <path d="M40 175 Q150 135 256 190 Q362 245 472 205" stroke="rgba(70,110,190,0.10)" stroke-width="20" fill="none" stroke-linecap="round"/>
+                    <path d="M40 255 Q150 295 256 255 Q362 215 472 255" stroke="rgba(90,130,210,0.13)" stroke-width="20" fill="none" stroke-linecap="round"/>
+                    <path d="M40 335 Q150 375 256 325 Q362 270 472 310" stroke="rgba(70,110,190,0.10)" stroke-width="20" fill="none" stroke-linecap="round"/>
+                    <!-- L-split tally -->
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr13)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg13)"/>
+                    <!-- Screen -->
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <!-- Multiview inside -->
+                    <rect x="114" y="130" width="143" height="100" rx="3" fill="#0d1326" stroke="rgba(59,130,246,0.08)" stroke-width="0.5"/>
+                    <rect x="261" y="130" width="143" height="100" rx="3" fill="#0d1326" stroke="rgba(59,130,246,0.08)" stroke-width="0.5"/>
+                    <rect x="114" y="234" width="143" height="100" rx="3" fill="#0d1326" stroke="rgba(59,130,246,0.08)" stroke-width="0.5"/>
+                    <rect x="261" y="234" width="143" height="100" rx="3" fill="#0d1326" stroke="rgba(59,130,246,0.08)" stroke-width="0.5"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Full Production</div>
+            <div class="icon-concept">Weave + color bleed + multiview — the whole package</div>
+        </div>
+
+        <!-- 14: Weave + bleed + waveform -->
+        <div class="icon-card">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bg14" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a2744"/>
+                            <stop offset="50%" style="stop-color:#162040"/>
+                            <stop offset="100%" style="stop-color:#0d1528"/>
+                        </linearGradient>
+                        <radialGradient id="redBleed14" cx="82%" cy="16%" r="42%">
+                            <stop offset="0%" style="stop-color:rgba(239,68,68,0.11)"/>
+                            <stop offset="100%" style="stop-color:rgba(239,68,68,0)"/>
+                        </radialGradient>
+                        <radialGradient id="greenBleed14" cx="16%" cy="84%" r="42%">
+                            <stop offset="0%" style="stop-color:rgba(34,197,94,0.09)"/>
+                            <stop offset="100%" style="stop-color:rgba(34,197,94,0)"/>
+                        </radialGradient>
+                        <filter id="gr14"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="gg14"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <clipPath id="screenClip14"><rect x="108" y="124" width="300" height="216" rx="4"/></clipPath>
+                    </defs>
+                    <rect width="512" height="512" rx="115" fill="url(#bg14)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#redBleed14)"/>
+                    <rect width="512" height="512" rx="115" fill="url(#greenBleed14)"/>
+                    <!-- Weave -->
+                    <path d="M40 175 Q150 135 256 190 Q362 245 472 205" stroke="rgba(70,110,190,0.10)" stroke-width="20" fill="none" stroke-linecap="round"/>
+                    <path d="M40 255 Q150 295 256 255 Q362 215 472 255" stroke="rgba(90,130,210,0.13)" stroke-width="20" fill="none" stroke-linecap="round"/>
+                    <path d="M40 335 Q150 375 256 325 Q362 270 472 310" stroke="rgba(70,110,190,0.10)" stroke-width="20" fill="none" stroke-linecap="round"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gr14)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#gg14)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <!-- Waveform inside -->
+                    <g clip-path="url(#screenClip14)">
+                        <path d="M110 232 L145 232 L155 205 L165 258 L175 218 L185 245 L195 210 L205 252 L215 220 L225 248 L235 208 L245 255 L255 215 L265 248 L275 202 L285 260 L295 218 L305 242 L315 212 L325 252 L335 226 L345 240 L355 222 L365 238 L375 230 L405 230" stroke="rgba(59,130,246,0.35)" stroke-width="1.5" fill="none"/>
+                        <path d="M110 232 L145 232 L155 205 L165 258 L175 218 L185 245 L195 210 L205 252 L215 220 L225 248 L235 208 L245 255 L255 215 L265 248 L275 202 L285 260 L295 218 L305 242 L315 212 L325 252 L335 226 L345 240 L355 222 L365 238 L375 230 L405 230 L405 340 L110 340 Z" fill="rgba(59,130,246,0.04)"/>
+                    </g>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/>
+                    <circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+            </div>
+            <div class="icon-name">Scope + Weave + Bleed</div>
+            <div class="icon-concept">Waveform screen, color bleed, weave threads — maximum depth</div>
+        </div>
+    </div>
+
+    <!-- ==================== SIZE SCALING ==================== -->
+    <div class="sizes-section">
+        <div class="section-title">Size Scaling — "Weave + Tally Dot" (Favorite)</div>
+        <div class="size-row">
+            <div class="size-item">
+                <svg viewBox="0 0 512 512" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                    <defs><linearGradient id="sz16" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a2744"/><stop offset="100%" style="stop-color:#0d1528"/></linearGradient><radialGradient id="sz16g" cx="50%" cy="40%" r="50%"><stop offset="0%" style="stop-color:rgba(59,130,246,0.14)"/><stop offset="100%" style="stop-color:rgba(59,130,246,0)"/></radialGradient><filter id="szr16"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="szg16"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                    <rect width="512" height="512" rx="115" fill="url(#sz16)"/><rect width="512" height="512" rx="115" fill="url(#sz16g)"/>
+                    <path d="M40 175 Q150 135 256 190 Q362 245 472 205" stroke="rgba(70,110,190,0.13)" stroke-width="26" fill="none" stroke-linecap="round"/>
+                    <path d="M40 255 Q150 295 256 255 Q362 215 472 255" stroke="rgba(90,130,210,0.16)" stroke-width="26" fill="none" stroke-linecap="round"/>
+                    <path d="M40 335 Q150 375 256 325 Q362 270 472 310" stroke="rgba(70,110,190,0.13)" stroke-width="26" fill="none" stroke-linecap="round"/>
+                    <circle cx="256" cy="255" r="10" fill="rgba(239,68,68,0.5)"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="12" fill="none" stroke-linecap="round" filter="url(#szr16)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="12" fill="none" stroke-linecap="round" filter="url(#szg16)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="14" fill="#ef4444"/><circle cx="296" cy="416" r="14" fill="#22c55e"/>
+                </svg>
+                <span>16px</span>
+            </div>
+            <div class="size-item">
+                <svg viewBox="0 0 512 512" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                    <defs><linearGradient id="sz32" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a2744"/><stop offset="100%" style="stop-color:#0d1528"/></linearGradient><radialGradient id="sz32g" cx="50%" cy="40%" r="50%"><stop offset="0%" style="stop-color:rgba(59,130,246,0.14)"/><stop offset="100%" style="stop-color:rgba(59,130,246,0)"/></radialGradient><filter id="szr32"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="szg32"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                    <rect width="512" height="512" rx="115" fill="url(#sz32)"/><rect width="512" height="512" rx="115" fill="url(#sz32g)"/>
+                    <path d="M40 175 Q150 135 256 190 Q362 245 472 205" stroke="rgba(70,110,190,0.13)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <path d="M40 255 Q150 295 256 255 Q362 215 472 255" stroke="rgba(90,130,210,0.16)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <path d="M40 335 Q150 375 256 325 Q362 270 472 310" stroke="rgba(70,110,190,0.13)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <circle cx="256" cy="255" r="8" fill="rgba(239,68,68,0.5)"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#szr32)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#szg32)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="12" fill="#ef4444"/><circle cx="296" cy="416" r="12" fill="#22c55e"/>
+                </svg>
+                <span>32px</span>
+            </div>
+            <div class="size-item">
+                <svg viewBox="0 0 512 512" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+                    <defs><linearGradient id="sz64" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a2744"/><stop offset="100%" style="stop-color:#0d1528"/></linearGradient><radialGradient id="sz64g" cx="50%" cy="40%" r="50%"><stop offset="0%" style="stop-color:rgba(59,130,246,0.14)"/><stop offset="100%" style="stop-color:rgba(59,130,246,0)"/></radialGradient><filter id="szr64"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="szg64"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="szdg64"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                    <rect width="512" height="512" rx="115" fill="url(#sz64)"/><rect width="512" height="512" rx="115" fill="url(#sz64g)"/>
+                    <path d="M40 175 Q150 135 256 190 Q362 245 472 205" stroke="rgba(70,110,190,0.13)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <path d="M40 255 Q150 295 256 255 Q362 215 472 255" stroke="rgba(90,130,210,0.16)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <path d="M40 335 Q150 375 256 325 Q362 270 472 310" stroke="rgba(70,110,190,0.13)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <circle cx="256" cy="255" r="16" fill="rgba(239,68,68,0.15)" filter="url(#szdg64)"/>
+                    <circle cx="256" cy="255" r="8" fill="rgba(239,68,68,0.5)"/>
+                    <circle cx="256" cy="255" r="4" fill="#fca5a5" opacity="0.6"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#szr64)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#szg64)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/><circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+                <span>64px</span>
+            </div>
+            <div class="size-item">
+                <svg viewBox="0 0 512 512" width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+                    <defs><linearGradient id="sz128" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a2744"/><stop offset="100%" style="stop-color:#0d1528"/></linearGradient><radialGradient id="sz128g" cx="50%" cy="40%" r="50%"><stop offset="0%" style="stop-color:rgba(59,130,246,0.14)"/><stop offset="100%" style="stop-color:rgba(59,130,246,0)"/></radialGradient><filter id="szr128"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="szg128"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="szdg128"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                    <rect width="512" height="512" rx="115" fill="url(#sz128)"/><rect width="512" height="512" rx="115" fill="url(#sz128g)"/>
+                    <path d="M40 175 Q150 135 256 190 Q362 245 472 205" stroke="rgba(70,110,190,0.13)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <path d="M40 255 Q150 295 256 255 Q362 215 472 255" stroke="rgba(90,130,210,0.16)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <path d="M40 335 Q150 375 256 325 Q362 270 472 310" stroke="rgba(70,110,190,0.13)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <circle cx="256" cy="255" r="16" fill="rgba(239,68,68,0.15)" filter="url(#szdg128)"/>
+                    <circle cx="256" cy="255" r="8" fill="rgba(239,68,68,0.5)"/>
+                    <circle cx="256" cy="255" r="4" fill="#fca5a5" opacity="0.6"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#szr128)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#szg128)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/><circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                </svg>
+                <span>128px</span>
+            </div>
+            <div class="size-item">
+                <svg viewBox="0 0 512 512" width="256" height="256" xmlns="http://www.w3.org/2000/svg">
+                    <defs><linearGradient id="sz256" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a2744"/><stop offset="100%" style="stop-color:#0d1528"/></linearGradient><radialGradient id="sz256g" cx="50%" cy="40%" r="50%"><stop offset="0%" style="stop-color:rgba(59,130,246,0.14)"/><stop offset="100%" style="stop-color:rgba(59,130,246,0)"/></radialGradient><filter id="szr256"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="szg256"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="szdg256"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                    <rect width="512" height="512" rx="115" fill="url(#sz256)"/><rect width="512" height="512" rx="115" fill="url(#sz256g)"/>
+                    <path d="M40 175 Q150 135 256 190 Q362 245 472 205" stroke="rgba(70,110,190,0.13)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <path d="M40 255 Q150 295 256 255 Q362 215 472 255" stroke="rgba(90,130,210,0.16)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <path d="M40 335 Q150 375 256 325 Q362 270 472 310" stroke="rgba(70,110,190,0.13)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                    <circle cx="256" cy="255" r="16" fill="rgba(239,68,68,0.15)" filter="url(#szdg256)"/>
+                    <circle cx="256" cy="255" r="8" fill="rgba(239,68,68,0.5)"/>
+                    <circle cx="256" cy="255" r="4" fill="#fca5a5" opacity="0.6"/>
+                    <path d="M108 104 L404 104 Q424 104 424 124 L424 356" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#szr256)"/>
+                    <path d="M88 136 L88 340 Q88 356 108 356 L396 356" stroke="#22c55e" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#szg256)"/>
+                    <rect x="104" y="120" width="308" height="224" rx="6" fill="#0b1020"/>
+                    <circle cx="216" cy="416" r="9" fill="#ef4444"/><circle cx="296" cy="416" r="9" fill="#22c55e"/>
+                    <text x="216" y="442" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-family="-apple-system" font-size="11" font-weight="600">PGM</text>
+                    <text x="296" y="442" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-family="-apple-system" font-size="11" font-weight="600">PVW</text>
+                </svg>
+                <span>256px</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

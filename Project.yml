@@ -28,6 +28,7 @@ targets:
         INFOPLIST_KEY_LSUIElement: true
         INFOPLIST_KEY_CFBundleDisplayName: "Screen Tally"
         INFOPLIST_KEY_NSHumanReadableCopyright: "Copyright 2025 Northwoods Community Church"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ENABLE_USER_SCRIPT_SANDBOXING: false
 
 schemes:
