@@ -1,5 +1,6 @@
 import AppKit
 import SwiftUI
+import Sparkle
 
 /// Manages the menu bar status item and popover
 @MainActor
@@ -9,6 +10,7 @@ final class StatusBarController: NSObject {
     private var eventMonitor: Any?
 
     var tslListener: TSLListener?
+    var updater: SPUUpdater?
 
     // MARK: - Init
 
@@ -22,8 +24,9 @@ final class StatusBarController: NSObject {
         setupEventMonitor()
     }
 
-    func configure(tslListener: TSLListener) {
+    func configure(tslListener: TSLListener, updater: SPUUpdater) {
         self.tslListener = tslListener
+        self.updater = updater
         setupPopover()
     }
 
@@ -122,9 +125,10 @@ final class StatusBarController: NSObject {
     private func showContextMenu() {
         let menu = NSMenu()
 
+        menu.addItem(NSMenuItem(title: "Check for Updates...", action: #selector(checkForUpdates), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Settings...", action: #selector(openSettings), keyEquivalent: ","))
         menu.addItem(.separator())
-        menu.addItem(NSMenuItem(title: "Quit Screen Tally", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem(title: "Quit Limbus Live", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
 
         statusItem.menu = menu
         statusItem.button?.performClick(nil)
@@ -137,6 +141,10 @@ final class StatusBarController: NSObject {
     @objc private func openSettings() {
         NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
         NSApp.activate(ignoringOtherApps: true)
+    }
+
+    @objc private func checkForUpdates() {
+        updater?.checkForUpdates()
     }
 
     // MARK: - Cleanup

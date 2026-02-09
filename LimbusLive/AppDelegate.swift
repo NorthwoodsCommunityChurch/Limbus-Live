@@ -1,5 +1,6 @@
 import AppKit
 import Observation
+import Sparkle
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var tslListener: TSLListener!
@@ -7,12 +8,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var borderOverlayController: BorderOverlayController!
     private var observationTask: Task<Void, Never>?
 
+    /// Sparkle updater controller - manages automatic update checks
+    let updaterController = SPUStandardUpdaterController(
+        startingUpdater: true,
+        updaterDelegate: nil,
+        userDriverDelegate: nil
+    )
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         Task { @MainActor in
             // Initialize components
             tslListener = TSLListener()
             statusBarController = StatusBarController()
-            statusBarController.configure(tslListener: tslListener)
+            statusBarController.configure(tslListener: tslListener, updater: updaterController.updater)
             borderOverlayController = BorderOverlayController()
 
             // Setup the border overlay window

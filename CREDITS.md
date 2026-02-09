@@ -8,6 +8,7 @@
 | [AppKit](https://developer.apple.com/documentation/appkit) | macOS application framework | Apple EULA |
 | [Network](https://developer.apple.com/documentation/network) | Apple's modern networking framework | Apple EULA |
 | [Observation](https://developer.apple.com/documentation/observation) | Swift observation framework | Apple EULA |
+| [Sparkle](https://sparkle-project.org/) | Software update framework for macOS | [MIT](https://github.com/sparkle-project/Sparkle/blob/2.x/LICENSE) |
 
 ## Icons & Assets
 
