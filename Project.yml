@@ -42,7 +42,7 @@ targets:
         LSUIElement: true
         NSHumanReadableCopyright: "Copyright 2025 Northwoods Community Church"
         SUPublicEDKey: VIMxKZmmRokdMcHK5d3QU4+qHgBglmkVFP5aAVvxgqM=
-        SUFeedURL: https://northwoodscommunitychurch.github.io/app-updates/appcast.xml
+        SUFeedURL: https://northwoodscommunitychurch.github.io/app-updates/appcast-limbuslive.xml
 
 schemes:
   LimbusLive:
